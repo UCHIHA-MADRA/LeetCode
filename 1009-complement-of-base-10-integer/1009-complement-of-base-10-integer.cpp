@@ -1,22 +1,17 @@
 class Solution {
 public:
-    int bitwiseComplement(int num) {
-       if (num == 0) {
-        return 1; // Special case for input 0
-    }
-
-    int result = 0;
-    int position = 0;
-
-    while (num > 0) {
-        int bit = num & 1; // Get the rightmost bit of 'num'
-        // Flip the bit and add it to the result
-        result |= (1 - bit) << position;
-        position++;
-        num >>= 1; // Right shift 'num'
-    }
-
-    return result;
-
+    int bitwiseComplement(int n) {
+        if (n == 0) {
+return 1; // Special case for input 0
+}
+   int mask =0;
+        int m = n;
+        while(m)
+        {
+            mask=(mask<<1)| 1; 
+            m=m>>1;}
+        int ans=(~n) & mask;
+        return ans;
+        
     }
 };
