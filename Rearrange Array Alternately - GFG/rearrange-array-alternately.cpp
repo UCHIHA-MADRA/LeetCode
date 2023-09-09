@@ -17,25 +17,24 @@ class Solution{
     { 
     	
     	// Your code here
-    	  int maxIndex = n - 1;
-    int minIndex = 0;
-    int maxElement = arr[n - 1] + 1; // Max value used as a multiplier
+    	 int minIdx = 0, maxIdx = n - 1;
+    long long nextMax = arr[n - 1] + 1;
 
     for (int i = 0; i < n; i++) {
-        // For even index, pick the max element
         if (i % 2 == 0) {
-            arr[i] += (arr[maxIndex] % maxElement) * maxElement;
-            maxIndex--;
-        } else { // For odd index, pick the min element
-            arr[i] += (arr[minIndex] % maxElement) * maxElement;
-            minIndex++;
+            arr[i] += (arr[maxIdx] % nextMax) * nextMax;
+            maxIdx--;
+        } else {
+            arr[i] += (arr[minIdx] % nextMax) * nextMax;
+            minIdx++;
         }
     }
 
     for (int i = 0; i < n; i++) {
-        arr[i] /= maxElement; // Extract the modified values
+        arr[i] /= nextMax;
     }
-    }
+}
+    
 };
 
 //{ Driver Code Starts.
